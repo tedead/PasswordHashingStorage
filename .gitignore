@@ -12,6 +12,9 @@ obj/
 project.lock.json
 project.assets.json
 
+# Claude Code
+.claude/settings.local.json
+
 # OS
 Thumbs.db
 .DS_Store
