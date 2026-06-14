@@ -37,6 +37,8 @@ public static class HashCalculator
     public static IReadOnlyList<string> DetectAlgorithms(string hex)
     {
         string h = hex.Trim();
+        if (h.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            h = h[2..];
         if (!h.All(Uri.IsHexDigit))
             return Array.Empty<string>();
 
@@ -54,6 +56,8 @@ public static class HashCalculator
     public static byte[] ParseHex(string hex)
     {
         string h = hex.Trim();
+        if (h.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            h = h[2..];
         if (h.Length % 2 != 0)
             throw new FormatException("Invalid hexadecimal length.");
         return Convert.FromHexString(h);
